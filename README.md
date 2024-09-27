@@ -1,8 +1,8 @@
-# PDF_Ctrl+F
+# PDF_Ctrl-f
 
 ## Description
 
-`PDF_Ctrl+F` is a Python script that searches for terms within one or more PDF files and outputs the results to an Excel file. The script provides two modes of operation:
+`PDF_Ctrl-f` is a Python script that searches for terms within one or more PDF files and outputs the results to an Excel file. The script provides two modes of operation:
 - Mark the presence of search terms with an 'X'.
 - Count the occurrences of each search term in the PDF(s).
 
@@ -46,7 +46,7 @@ pip install pymupdf pandas openpyxl
 ## Usage
 
 ```bash
-python PDF_Ctrl+F.py [-f SEARCH_TERM | -t TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o OUTPUT_FILE] [-c]
+python PDF_Ctrl-f.py [-f SEARCH_TERM | -t TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o OUTPUT_FILE] [-c]
 ```
 
 ## Arguments
@@ -60,19 +60,19 @@ python PDF_Ctrl+F.py [-f SEARCH_TERM | -t TERMS_FILE] [-p PDF_PATH | -P PDF_PARE
 ## Examples
 1. Search for the term 'Python' in a single PDF file:
 ```bash
-python PDF_Ctrl+F.py -f "Python" -p "example.pdf" -o "output.xlsx"
+python PDF_Ctrl-f.py -f "Python" -p "example.pdf" -o "output.xlsx"
 ```
 2. Search for multiple terms in a directory of PDF files:
 ```bash
-python PDF_Ctrl+F.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx"
+python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx"
 ```
 3. Count the occurrences of each term in a single PDF file:
 ```bash
-python PDF_Ctrl+F.py -f "Python" -p "example.pdf" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -f "Python" -p "example.pdf" -o "output.xlsx" -c
 ```
 4. Count the occurrences of multiple terms in a directory of PDF files:
 ```bash
-python PDF_Ctrl+F.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
 ```
 
 ## License

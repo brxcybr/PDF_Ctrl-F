@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-# PDF_Ctrl+F.py
+# PDF_Ctrl-f.py
 # Author: brx.cybr@gmail.com
 # Date: 2021-09-01
 # Search for terms in one or more PDF files and save the results to an Excel file.
-# Usage: python PDF_Ctrl+F.py -p "path/to/pdf_file.pdf" -t "search_term" -o "output_file.xlsx"
-# Usage: python PDF_Ctrl+F.py -P "path/to/pdf_directory" -t "path/to/terms_file.txt" -o "output_file.xlsx"
-# Usage: python PDF_Ctrl+F.py -P "path/to/pdf_directory" -t "path/to/terms_file.txt" -c # Count occurrences of each term
+# Usage: python PDF_Ctrl-f.py -p "path/to/pdf_file.pdf" -t "search_term" -o "output_file.xlsx"
+# Usage: python PDF_Ctrl-f.py -P "path/to/pdf_directory" -t "path/to/terms_file.txt" -o "output_file.xlsx"
+# Usage: python PDF_Ctrl-f.py -P "path/to/pdf_directory" -t "path/to/terms_file.txt" -c # Count occurrences of each term
 
 import re
 import fitz  # PyMuPDF for extracting the text from the PDF
