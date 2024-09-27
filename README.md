@@ -74,6 +74,35 @@ python PDF_Ctrl-f.py -f "Python" -p "example.pdf" -o "output.xlsx" -c
 ```bash
 python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
 ```
+## Example Output
+
+### Example Search Terms:
+- Python
+- Programming
+- Data Analysis
+
+### Example Files:
+- `example1.pdf`
+- `example2.pdf`
+
+### Output (Mode: `Presence`)
+
+| Term            | example1.pdf | example2.pdf |
+|-----------------|--------------|--------------|
+| Python          | X            |              |
+| Programming     | X            | X            |
+| Data Analysis   |              | X            |
+
+### Output (Mode: `Count`)
+
+| Term            | example1.pdf | example2.pdf |
+|-----------------|--------------|--------------|
+| Python          | 3            | 0            |
+| Programming     | 5            | 2            |
+| Data Analysis   | 0            | 4            |
+
+In `Presence` mode, the script will place an `X` in the cell if the term is found in the corresponding PDF. In `Count` mode, the script will count how many times the term appears in each PDF file.
+
 
 ## License
 MIT License.
