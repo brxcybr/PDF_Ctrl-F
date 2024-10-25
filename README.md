@@ -49,7 +49,7 @@ pip install pymupdf pandas openpyxl
 python PDF_Ctrl-f.py [-f SEARCH_TERM | -t TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o OUTPUT_FILE] [-c]
 ```
 
-## Arguments
+### Arguments
 - `-f`, `--search_term`: Single search term to look for in the PDF(s).
 - `-t`, `--terms_path`: Text file containing multiple search terms (one per line).
 - `-p`, `--pdf_path`: Path to a single PDF file.
