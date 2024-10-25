@@ -21,6 +21,7 @@ def parse_args():
     parser.add_argument("-f", "--search_term", type=str, help="Search for a single term.")
     parser.add_argument("-p", "--pdf_path", type=str, help="Path to the PDF file to search.")
     parser.add_argument("-P", "--pdf_parent_path", type=str, help="Path to the parent directory containing PDF files.")
+    parser.add_argument("-r", "--regex", action="store_true", help="Enable regex search mode. Use with -f for a single regex or -t for a list of regex patterns.")
     parser.add_argument("-t", "--terms_path", type=str, help="Path to the file containing search terms.")
     parser.add_argument("-o", "--output_file", type=str, help="Path to the output Excel file.")
     parser.add_argument("-c", "--count", action="store_true", help="Count occurrences of each term instead of marking with an 'X'.")
