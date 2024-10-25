@@ -82,7 +82,7 @@ def gather_files(pdf_parent_path):
     return pdf_files
 
 # Search for terms in the PDF and return a dictionary of term counts or presence
-def find_terms_in_pdf(pdf_file, terms, count=False):
+def find_terms_in_pdf(pdf_file, terms, count=False, regex=False):
     try:
         pdf_document = fitz.open(pdf_file)
     except Exception as e:
@@ -99,14 +99,20 @@ def find_terms_in_pdf(pdf_file, terms, count=False):
     
     pdf_document.close()
 
-    # Search for each term in the document text
+    # Search for each term or regex in the document text
     term_found = {}
     for term in terms:
-        escaped_term = re.escape(term.lower())
-        if count:
-            term_found[term] = len(re.findall(r'\b' + escaped_term + r'\b', text))
+        if regex:
+            # Use the term as a regex pattern
+            pattern = re.compile(term, re.IGNORECASE)
         else:
-            term_found[term] = bool(re.search(r'\b' + escaped_term + r'\b', text))
+            # Escape term for literal search
+            pattern = re.compile(r'\b' + re.escape(term.lower()) + r'\b')
+
+        if count:
+            term_found[term] = len(pattern.findall(text))
+        else:
+            term_found[term] = bool(pattern.search(text))
     
     return term_found
 
@@ -153,7 +159,7 @@ def main(options):
     # Process each PDF file and store term results
     for pdf_file in pdf_files:
         print(f"Processing file: {pdf_file}")
-        term_found = find_terms_in_pdf(pdf_file, options.terms, options.count)
+        term_found = find_terms_in_pdf(pdf_file, options.terms, options.count, options.regex)
         term_results[pdf_file] = term_found
 
     # Export all results to Excel
