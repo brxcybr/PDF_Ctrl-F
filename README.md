@@ -46,33 +46,33 @@ pip install pymupdf pandas openpyxl
 ## Usage
 
 ```bash
-python PDF_Ctrl-f.py [-f SEARCH_TERM | -t TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o OUTPUT_FILE] [-c]
+python PDF_Ctrl-f.py [-t SEARCH_TERM | -T TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o | OUTPUT_FILE] [-c]
 ```
 
-### Arguments
-- `-f`, `--search_term`: Single search term to look for in the PDF(s).
-- `-t`, `--terms_path`: Text file containing multiple search terms (one per line).
+## Arguments
+- `-t`, `--term`: Single search term to look for in the PDF(s).
+- `-T`, `--terms-file`: Text file containing multiple search terms (one per line).
 - `-p`, `--pdf_path`: Path to a single PDF file.
 - `-P`, `--pdf_parent_path`: Path to a directory containing PDF files.
-- `-o`, `--output_file`: Path to the output Excel file. Default is `Term_Usage_by_PDF.xlsx`.
+- `-o`, `--output_file`: Path to the output Excel file. Default is `Term_Usage_by_PDF.xlsx`. Omitting this argument will print the results to the console.
 - `-c`, `--count`: Count the occurrences of each term in the PDF(s) instead of an `X` in each cell.
 
 ## Examples
 1. Search for the term 'Python' in a single PDF file:
 ```bash
-python PDF_Ctrl-f.py -f "Python" -p "example.pdf" -o "output.xlsx"
+python PDF_Ctrl-f.py -t "Python" -p "example.pdf" -o "output.xlsx"
 ```
 2. Search for multiple terms in a directory of PDF files:
 ```bash
-python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx"
+python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx"
 ```
 3. Count the occurrences of each term in a single PDF file:
 ```bash
-python PDF_Ctrl-f.py -f "Python" -p "example.pdf" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -t "Python" -p "example.pdf" -o "output.xlsx" -c
 ```
 4. Count the occurrences of multiple terms in a directory of PDF files:
 ```bash
-python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
 ```
 ## Example Output
 
@@ -85,15 +85,21 @@ python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "outpu
 - `example1.pdf`
 - `example2.pdf`
 
-### Output (Mode: `Presence`)
+### Console Output (Mode: `Default/Count`)
+```bash
+$ python PDF_Ctrl-f.py -T search_terms.txt 
+Processing file 2/2... Done!
 
-| Term            | example1.pdf | example2.pdf |
-|-----------------|--------------|--------------|
-| Python          | X            |              |
-| Programming     | X            | X            |
-| Data Analysis   |              | X            |
+Found 'Python' 8 times in 2 PDF file(s):
+        Count   Path
+        5       example2.pdf
+        2       example1.pdf
 
-### Output (Mode: `Count`)
+The following terms had no results:
+        'Programming'
+        'Data Analysis'
+```
+### Excel Output (Mode: `Default/Count`)
 
 | Term            | example1.pdf | example2.pdf |
 |-----------------|--------------|--------------|
@@ -101,8 +107,15 @@ python PDF_Ctrl-f.py -t "search_terms.txt" -P "/path/to/pdf_directory" -o "outpu
 | Programming     | 5            | 2            |
 | Data Analysis   | 0            | 4            |
 
-In `Presence` mode, the script will place an `X` in the cell if the term is found in the corresponding PDF. In `Count` mode, the script will count how many times the term appears in each PDF file.
+### File Output (Mode: `Presence`)
 
+| Term            | example1.pdf | example2.pdf |
+|-----------------|--------------|--------------|
+| Python          | X            |              |
+| Programming     | X            | X            |
+| Data Analysis   |              | X            |
+
+In `Presence` mode, the script will place an `X` in the cell if the term is found in the corresponding PDF. In `Count` mode, the script will count how many times the term appears in each PDF file.
 
 ## License
 MIT License.
