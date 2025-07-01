@@ -46,7 +46,7 @@ pip install pymupdf pandas openpyxl
 ## Usage
 
 ```bash
-python PDF_Ctrl-f.py [-t SEARCH_TERM | -T TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o | OUTPUT_FILE] [-c]
+python PDF_Ctrl-f.py [-t SEARCH_TERM | -T TERMS_FILE] [-p PDF_PATH | -P PDF_PARENT_PATH] [-o | -o OUTPUT_FILE] [-c]
 ```
 
 ## Arguments
