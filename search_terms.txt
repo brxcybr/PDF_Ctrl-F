@@ -1,5 +1,3 @@
-apple
-dog
-brown
-circle
-florida
+Python
+Programming
+Data Analysis
