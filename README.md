@@ -69,15 +69,15 @@ python PDF_Ctrl-f.py -t "Python" -p "example.pdf"
 ```bash
 python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx"
 ```
-3. Count the occurrences of each term in a single PDF file:
+3. Count the occurrences of each term in a single PDF file in verbose mode and output to an Excel file:
 ```bash
-python PDF_Ctrl-f.py -t "Python" -p "example.pdf" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -t "Python" -p "example.pdf" -o "output.xlsx" -v
 ```
-4. Count the occurrences of multiple terms in a directory of PDF files:
+4. Determine the presence of multiple terms in a directory of PDF files:
 ```bash
-python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -c
+python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "output.xlsx" -x
 ```
-5. Search using a regex pattern to match terms starting with “Data” and output results to the console:
+5. Search using a regex pattern to match terms starting with “Data”:
 ```bash
 python PDF_Ctrl-f.py -t "^Data.*" -P "/path/to/pdf_directory"
 ```
@@ -123,7 +123,7 @@ The following terms had no results:
 | Programming     | X            | X            |
 | Data Analysis   |              | X            |
 
-In `Presence` mode, the script will place an `X` in the cell if the term is found in the corresponding PDF. In `Count` mode, the script will count how many times the term appears in each PDF file.
+By default, the script will count how many times the term appears in each PDF file and sort them by highest frequency. In `Presence` mode, the script will place an `X` in the cell if the term is found in the corresponding PDF. 
 
 ## License
 MIT License.
