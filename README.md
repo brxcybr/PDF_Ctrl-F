@@ -55,6 +55,7 @@ python PDF_Ctrl-f.py [-t SEARCH_TERM | -T TERMS_FILE] [-p PDF_PATH | -P PDF_PARE
 - `-o`, `--output_file`: Path to the output Excel file. Default is `Term_Usage_by_PDF.xlsx`. Omitting this argument will print the results to the console.
 - `-p`, `--pdf_path`: Path to a single PDF file.
 - `-P`, `--pdf_parent_path`: Path to a directory containing PDF files.
+- `-r`, `–-regex`: Treat search terms as regular expressions.
 - `-t`, `--term`: Single search term to look for in the PDF(s).
 - `-T`, `--terms-file`: Text file containing multiple search terms (one per line).
 - `-x`, `--no-count`: Mark occurrences of each term with an 'X' instead of showing counts.
@@ -79,7 +80,7 @@ python PDF_Ctrl-f.py -T "search_terms.txt" -P "/path/to/pdf_directory" -o "outpu
 ```
 5. Search using a regex pattern to match terms starting with “Data”:
 ```bash
-python PDF_Ctrl-f.py -t "^Data.*" -P "/path/to/pdf_directory"
+python PDF_Ctrl-f.py -t "^Data.*" -P "/path/to/pdf_directory" -r
 ```
 
 ## Example Output

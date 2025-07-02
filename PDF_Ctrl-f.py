@@ -25,6 +25,7 @@ def parse_args():
     parser.add_argument("-T", "--terms-file", dest="terms_path", type=str, help="Path to the file containing search terms.")
     parser.add_argument("-o", "--output_file", nargs="?", const="Term_Usage_by_PDF.xlsx", help="Optional: Path to the output Excel file. If this argument is used with no filename provided, uses a default filename. Omitting this argument prints results to the console.") # Defaults to "Term_Usage_by_PDF.xlsx" 
     parser.add_argument("-n", "--include-null", action="store_true", help="Include empty results in the output.")
+    parser.add_argument("-r", "--regex", action="store_true", help="Treat search terms as regular expressions.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output for debugging.")
     parser.add_argument("-x", "--no-count", action="store_true", help="Mark occurrences of each term instead with an 'X' instead of count.")
 
@@ -174,7 +175,7 @@ def main(options):
             print(f"Processing file ({idx}/{len(pdf_files)}): {pdf_file}")
         else:
             print(f"Processing file {idx}/{len(pdf_files)}...", end='\r')
-        term_found = find_terms_in_pdf(pdf_file, options.terms, not options.no_count)
+        term_found = find_terms_in_pdf(pdf_file, options.terms, not options.no_count, options.regex)
         term_results[pdf_file] = term_found
     print(f"Processing file {len(pdf_files)}/{len(pdf_files)}... Done!\n")
 
